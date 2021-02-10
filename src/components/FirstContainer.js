@@ -235,13 +235,13 @@ class FirstContainer extends Component{
 
   render() {
       return(
-    <div className="FirstContainer">
+    <div className="FirstContainer" >
 
-        <div class="container-fluid">
+        <div class="container-fluid"  >
 
-        <div class="row" >
+        <div class="row" style={{marginTop:'2%'}}>
         <div class="col-xl-4 " >
-            <div class="card row1" >
+            <div class="card row1" style={{borderRadius:'15px'}} >
                 <div class="settings">
                     <a href="#">
                         <img src="settings2.svg" alt="settings" />
@@ -264,7 +264,7 @@ class FirstContainer extends Component{
 
         </div>
         <div class="col-xl-8" >
-            <div class="card row1" >
+            <div class="card row1"  style={{borderRadius:'15px'}} >
                 <div class="settings">
                     <a href="#">
                         <img src="settings2.svg" alt="settings" />

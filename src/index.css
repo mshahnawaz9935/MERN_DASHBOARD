@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#ebf0f4;
+
 }
 
 code {
@@ -19,6 +19,7 @@ code {
   height:550px;
 
 }
+
 .card_title {
   height: 41px;
   font-size: 30px;

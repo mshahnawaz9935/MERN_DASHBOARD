@@ -8,10 +8,10 @@ import React, { Component } from 'react';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ backgroundColor:'#ebf0f4',height:'98vh'}}>
         <NavMenu />
         
-        <FirstContainer />
+        <FirstContainer  />
       
       </div>
     );
