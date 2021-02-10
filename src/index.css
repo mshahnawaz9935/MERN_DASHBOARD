@@ -7,9 +7,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:#ebf0f4;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.row1{
+  height:619px;
+
+}
+.card_title {
+  height: 41px;
+  font-size: 30px;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.5px;
+  color:#0055a5;
+}
+.settings {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

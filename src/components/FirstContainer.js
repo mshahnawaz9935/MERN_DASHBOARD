@@ -1,57 +1,66 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card , CardGroup ,Button  } from 'react-bootstrap';
 
 
 var cardStyle = {
-    height: '500px'
+    backgroundColor : '#ebf0f4',
+     height: '800px'
 }
-function FirstContainer() {
-  return (
+
+
+class FirstContainer extends Component{
+
+    showAlert() {
+        alert("I'm an alert");
+      }
+
+  render() {
+      return(
     <div className="FirstContainer">
-          <CardGroup>
-        <Card style={cardStyle}>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
-        </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-        </Card>
-    <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-            This card has supporting text below as a natural lead-in to additional
-            content.{' '}
-        </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-    </Card>
-    <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in to
-            additional content. This card has even longer content than the first to
-            show that equal height action.
-        </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-    </Card>
-</CardGroup>
+
+        <div class="container-fluid">
+
+        <div class="row" >
+        <div class="col-xl-4 " >
+            <div class="card row1" >
+                <div class="settings">
+                    <a href="#">
+                        <img src="settings2.svg" alt="settings" />
+                    </a>
+                </div>
+                <div class="card-body">
+                    <span class="card_title" onClick={this.showAlert}>
+                        Herd Overview
+                    </span>
+                    <hr />
+                    <div id="new" class="overviewpie" ></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-8" >
+            <div class="card row1" >
+                <div class="settings">
+                    <a href="#">
+                        <img src="settings2.svg" alt="settings" />
+                    </a>
+                </div>
+                <div class="card-body">
+                    <span class="card_title">
+                        Milking Stats
+                    </span>
+                    <hr />
+                    <div id="new" class="overviewpie" ></div>
+                </div>
+            </div>
+
+        </div>
+          
     </div>
-  );
+    </div>
+    </div>
+      )
  }
+}
 
 export default FirstContainer;
