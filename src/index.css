@@ -16,7 +16,7 @@ code {
 }
 
 .row1{
-  height:619px;
+  height:550px;
 
 }
 .card_title {
@@ -33,4 +33,29 @@ code {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.card_text_header {
+  padding-top: 3%;
+  font-size: 12px;  font-weight: 600;  font-style: normal;
+   font-stretch: normal;line-height: normal; letter-spacing: 1px;
+    color : #8a95a0;
+
+}
+
+.dashboard_link {
+  color: #8a95a0;
+  font-size:13px;
+  text-decoration: none;
+}
+
+.milking_card_text{
+  margin-left:-3%; 
+                  font-size: 30px;  font-weight: 700;  font-style: normal;
+                  font-stretch: normal; line-height: normal; letter-spacing: 1.5px;color :#0055a5
+  }
+
+  .overviewpie {
+    height: 500px;
+    width: 100%;
 }
