@@ -61,18 +61,7 @@ class HomeContainer extends Component {
                   keyExpr="userId"
                   onSelectionChanged={this.onSelectionChanged}
                   onContentReady={this.onContentReady}
-                  onEditingStart={this.onEditingStart}
-                  onInitNewRow={this.onInitNewRow}
-                  onRowInserting={this.onRowInserting}
-                  onRowInserted={this.onRowInserted}
-                  onRowUpdating={this.onRowUpdating}
-                  onRowUpdated={this.onRowUpdated}
-                  onRowRemoving={this.onRowRemoving}
-                  onRowRemoved={this.onRowRemoved}
-                  onSaving={this.onSaving}
-                  onSaved={this.onSaved}
-                  onEditCanceling={this.onEditCanceling}
-                  onEditCanceled={this.onEditCanceled}>
+                 >
                 
                 <Editing
                   mode="row"
@@ -212,7 +201,6 @@ class HomeContainer extends Component {
 
   onSelectionChanged({ selectedRowsData }) {
     const data = selectedRowsData[0];
-    console.log(data);
 
     this.setState({
       name: data && data.name,
