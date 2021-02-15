@@ -60,3 +60,12 @@ code {
     height: 500px;
     width: 100%;
 }
+
+.input {
+  margin-top: -13px;
+  height: 35px;
+  color: #0055a5;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+}

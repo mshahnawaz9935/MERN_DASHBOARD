@@ -277,6 +277,14 @@ class FirstContainer extends Component{
                     <hr />
                     <div class="row ">
                     <div class="col-6">
+                        <div class="overviewpie">
+                        <HighchartsReact 
+                            highcharts={Highcharts}
+                            options={options2}
+                        />
+                        </div>
+                        </div>
+                    <div class="col-6">
                     <div class="row card_text_header">
 
                         <div class="col-6">
@@ -347,14 +355,7 @@ class FirstContainer extends Component{
 
                             </div>
                         </div>
-                        <div class="col-6">
-                        <div class="overviewpie">
-                        <HighchartsReact 
-                            highcharts={Highcharts}
-                            options={options2}
-                        />
-                        </div>
-                        </div>
+                        
                     </div>
                    
                 </div>
