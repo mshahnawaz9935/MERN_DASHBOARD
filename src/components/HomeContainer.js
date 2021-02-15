@@ -50,8 +50,8 @@ class HomeContainer extends Component {
         <div class="row" style={{ padding: '2%'  }}>
             <div class="col-7">
             <Card style={{borderRadius:'15px',height:'80vh' }}>
-            <Card.Body>
-                <Card.Title className="card_title">All Users</Card.Title>
+            <Card.Body style={{marginLeft:'10px',marginRight:'11px',marginTop:'9px'}}>
+                <Card.Title class="card_title" style={{textAlign : 'left',paddingBottom:'5px'}}><span style={{ borderBottom: '2px solid #ebf0f4'}}>Users</span></Card.Title>
                 <Card.Text>
                 <DataGrid
                   dataSource={this.state.users}
