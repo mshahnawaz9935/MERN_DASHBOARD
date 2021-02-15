@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import DataGrid, { Column, Editing, Paging, Lookup } from 'devextreme-react/data-grid';
 import { Card , CardGroup ,Button  } from 'react-bootstrap';
 
-
 const users = [];
 
 const renderTitleHeader = (data) => {
   return <div class='grid-headers'>{data.column.caption}</div>;
 }
 class HomeContainer extends Component {
-
 
   constructor(props) {
     super(props);
@@ -20,48 +18,37 @@ class HomeContainer extends Component {
   
     }; 
   
-     
-
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
     this.onContentReady = this.onContentReady.bind(this);
   }
 
   componentDidMount() {
-    // Simple GET request using fetch
-    // https://dashboard-api.bounceinsights.com/misc/sampleUsers
+    //  GET request using fetch
     fetch('https://dashboard-api.bounceinsights.com/misc/sampleUsers')
-        .then(  response =>{ 
+        .then(response =>  { 
         
-        if(response.status == 200)
-        return response.json(); 
-        else 
-        {
-          console.log(response.status);
-          throw new Error(response.status);
-        }
+            if(response.status == 200)
+            return response.json(); 
+            else 
+            {
+              console.log(response.status);
+              throw new Error(response.status);
+            }
          })
         .then(data => {
-
-          console.log(data);
-          if(data!=null)
-          this.setState({ users : data.users  })
+              if(data!=null)
+              this.setState({ users : data.users  })
         })
          .catch((error) => {
-    
-            this.setState({ errors : error + ' Error Occured ' })
-            
-         
+              this.setState({ errors : error + ' Error Occured ' })
         })
-      
 }
-
-
 
   render() {
     return (
       <div className="HomeContainer" >
         <div class="row" style={{ padding: '2%'  }}>
-            <div class="col-8">
+            <div class="col-7">
             <Card style={{borderRadius:'15px',height:'80vh' }}>
             <Card.Body>
                 <Card.Title className="card_title">All Users</Card.Title>
@@ -109,7 +96,7 @@ class HomeContainer extends Component {
             </Card.Body>
             </Card>
             </div>
-            <div class="col-4">
+            <div class="col-5">
             <Card style={{borderRadius:'15px',height:'80vh' }}>
             <Card.Body style={{marginLeft:'10px',marginRight:'11px',marginTop:'9px'}}>
                 <div class="row" >
@@ -119,7 +106,7 @@ class HomeContainer extends Component {
               </div>
               <div class="row" style={{paddingTop:'7%'}}>
                           <div class="col-12" style={{textAlign : 'left'}}>
-                              <span class="card_title" style={{fontSize:'18px',height:'30px'}}><span style={{borderBottom: '2px solid #dfdd07',paddingBottom:'5px'}}>User</span> Info</span>
+                              <span class="card_title" style={{fontSize:'18px',height:'30px'}}>User Info</span>
                                 </div>
               </div>
 
@@ -151,10 +138,7 @@ class HomeContainer extends Component {
                           </div>
                       </div>
                   </div>
-
-            
-            
-            
+ 
                   <div class="col-md-12" style={{paddingTop: '5%'}}>
                       <div class="row" style={{borderBottom:'1px solid #ebf0f4',height:'25px',marginRight:'-1px',marginLeft:'0%'}}>
                           <div class="col-sm-6">
@@ -208,24 +192,12 @@ class HomeContainer extends Component {
                         </div>
                     </div>
                 </div>
-
-
-                </div>
-
-
-
-           
-               
-            
-
-               
+                </div>   
               
             </Card.Body>
             </Card>
             </div>
         </div>
-       
-      
       </div>
     );
   }
@@ -238,8 +210,6 @@ class HomeContainer extends Component {
     }
   }
 
-
-
   onSelectionChanged({ selectedRowsData }) {
     const data = selectedRowsData[0];
     console.log(data);
@@ -251,7 +221,6 @@ class HomeContainer extends Component {
       email : data && data.email,
       surveys : data && data.surveys,
       id : data && data.userId
-    
     });
   }
 }
