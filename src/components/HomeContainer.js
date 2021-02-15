@@ -4,6 +4,10 @@ import { Card , CardGroup ,Button  } from 'react-bootstrap';
 
 
 const users = [];
+
+const renderTitleHeader = (data) => {
+  return <div class='grid-headers'>{data.column.caption}</div>;
+}
 class HomeContainer extends Component {
 
 
@@ -11,24 +15,44 @@ class HomeContainer extends Component {
     super(props);
     this.state = {
       users : [],
-      selectedRow : []
+      selectedRow : [],
+      errors : false
   
     }; 
   
      
 
     this.onSelectionChanged = this.onSelectionChanged.bind(this);
+    this.onContentReady = this.onContentReady.bind(this);
   }
 
   componentDidMount() {
     // Simple GET request using fetch
+    // https://dashboard-api.bounceinsights.com/misc/sampleUsers
     fetch('https://dashboard-api.bounceinsights.com/misc/sampleUsers')
-        .then(response => response.json())
-        .then(data => {
-       
-          this.setState({ users : data.users  })
+        .then(  response =>{ 
+        
+        if(response.status == 200)
+        return response.json(); 
+        else 
+        {
+          console.log(response.status);
+          throw new Error(response.status);
         }
-         );
+         })
+        .then(data => {
+
+          console.log(data);
+          if(data!=null)
+          this.setState({ users : data.users  })
+        })
+         .catch((error) => {
+    
+            this.setState({ errors : error + ' Error Occured ' })
+            
+         
+        })
+      
 }
 
 
@@ -49,6 +73,7 @@ class HomeContainer extends Component {
                   hoverStateEnabled={true}
                   keyExpr="userId"
                   onSelectionChanged={this.onSelectionChanged}
+                  onContentReady={this.onContentReady}
                   onEditingStart={this.onEditingStart}
                   onInitNewRow={this.onInitNewRow}
                   onRowInserting={this.onRowInserting}
@@ -61,19 +86,25 @@ class HomeContainer extends Component {
                   onSaved={this.onSaved}
                   onEditCanceling={this.onEditCanceling}
                   onEditCanceled={this.onEditCanceled}>
-                >
+                
                 <Editing
                   mode="row"
                   allowUpdating={true}
                   allowDeleting={true}
                   allowAdding={true} />
-                  <Column dataField="name" />
-                  <Column dataField="gender" />
-                  <Column dataField="registeredAt" dataType="date" />
-                  <Column dataField="surveys"  />
-                  <Column dataField="email" />
+                  <Column dataField="name" headerCellRender={renderTitleHeader} />
+                  <Column dataField="gender" headerCellRender={renderTitleHeader}/>
+                  <Column dataField="registeredAt" dataType="date" headerCellRender={renderTitleHeader}/>
+                  <Column dataField="surveys"  headerCellRender={renderTitleHeader}/>
+                  <Column dataField="email" headerCellRender={renderTitleHeader}/>
                 </DataGrid>
                 </Card.Text>
+                <div class="row" style={{paddingTop:'7%'}}>
+                          <div class="col-12" style={{textAlign : 'left'}}>
+                              <span class="card_title" style={{fontSize:'18px',height:'30px'}}><span style={{borderBottom: '2px solid #dfdd07',paddingBottom:'5px'}}>{this.state.errors}</span>
+                              </span>
+                                </div>
+              </div>
                
             </Card.Body>
             </Card>
@@ -145,7 +176,7 @@ class HomeContainer extends Component {
                               </a>
                           </div>
                           <div class="col-6">
-                              <div style={{textAlign:'right',color :'#0060b2',fontWeight:'bold',fontStretch:'normal',letterSpacing: '1.33px',fontSize: '14px'}}>{this.state.Register}</div>
+                              <div style={{textAlign:'right',color :'#0060b2',fontWeight:'bold',fontStretch:'normal',letterSpacing: '1.33px',fontSize: '14px'}}>{this.state.Register }</div>
 
                           </div>
                       </div>
@@ -199,6 +230,16 @@ class HomeContainer extends Component {
     );
   }
 
+  onContentReady(e) {
+    var grid = e.component;
+    var selection = grid.getSelectedRowKeys();
+    if (selection.length == 0) {
+        grid.selectRowsByIndexes([0]);
+    }
+  }
+
+
+
   onSelectionChanged({ selectedRowsData }) {
     const data = selectedRowsData[0];
     console.log(data);
@@ -206,7 +247,7 @@ class HomeContainer extends Component {
     this.setState({
       name: data && data.name,
       Gender : data && data.gender,
-      Register : data && data.registeredAt,
+      Register : data &&  new Date().toLocaleString(),
       email : data && data.email,
       surveys : data && data.surveys,
       id : data && data.userId

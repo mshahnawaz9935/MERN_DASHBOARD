@@ -36,6 +36,15 @@ code {
   right: 10px;
 }
 
+.grid-headers {
+  color: #0055a4;
+  font-size:12px;
+  padding-top:3px;
+  letter-spacing:1px;
+  font-weight:600;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+
 .card_text_header {
   padding-top: 3%;
   font-size: 12px;  font-weight: 600;  font-style: normal;
